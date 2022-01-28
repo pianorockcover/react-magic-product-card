@@ -19,7 +19,7 @@
     background-color: lighten(@bg, 10%);
   }
 
-  .bi {
+  .@{classPrefix}-icon {
     margin-right: 10px;
   }
 
@@ -35,4 +35,12 @@
     color: @default;
     background: lighten(@default, 30%);
   }
+}
+
+.@{classPrefix}-button-faded-primary {
+  .button(fade(@primary, 15%), @primary);
+}
+
+.@{classPrefix}-button-faded-success {
+  .button(fade(@success, 15%), @success);
 }

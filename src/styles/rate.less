@@ -1,8 +1,6 @@
-@import "../../variables.less";
+@rateClassName: ~"@{classPrefix}-rate";
 
-@rateClass: rate;
-
-.@{rateClass} {
+.@{rateClassName} {
     display: flex;
     align-items: flex-end;
     margin-bottom: 15px;
@@ -11,10 +9,11 @@
         color: @warning;
         display: flex;
         align-items: center;
-        font-size: 13px;
 
-        .@{productClass}-rate-star {
+        .@{classPrefix}-icon {
             margin-right: 3px;
+            width: 13px;
+            height: 13px;
         }
     }
 

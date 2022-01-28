@@ -56,7 +56,9 @@ const config = {
             filename: "index.html",
             inject: "body",
         }),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: `./css/index.css`,
+        }),
     ],
 };
 

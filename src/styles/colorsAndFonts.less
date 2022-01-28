@@ -2,6 +2,57 @@
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Backgrounds */
+.@{classPrefix}-bg-success-faded {
+  background-color: lighten(@success, 40%);
+  color: @success;
+}
+
+.@{classPrefix}-bg-contrast-faded {
+  background-color: lighten(@contrast, 40%);
+  color: @contrast;
+}
+
+.@{classPrefix}-bg-warning-faded {
+  background-color: lighten(@warning, 40%);
+  color: @warning;
+}
+
+.@{classPrefix}-bg-primary-faded {
+  background-color: lighten(@primary, 40%);
+  color: @primary;
+}
+
+.@{classPrefix}-bg-default-faded {
+  background-color: lighten(@default, 40%);
+  color: @default;
+}
+
+/* --- */
+
+/* Hovers */
+
+.@{classPrefix}-hover-contrast {
+
+  &:hover,
+  &.active {
+    color: @contrast;
+    border-color: fade(@contrast, 20%);
+  }
+}
+
+.@{classPrefix}-hover-primary {
+
+  &:hover,
+  &.active {
+    color: @primary;
+    border-color: fade(@primary, 20%);
+  }
+}
+
+/* --- */
+
+
 .text-thin {
   font-weight: 300;
 }
@@ -38,47 +89,12 @@
   background: @warning;
 }
 
-.bg-success-faded {
-  background-color: lighten(@success, 40%);
-  color: @success;
-}
-
-.bg-contrast-faded {
-  background-color: lighten(@contrast, 40%);
-  color: @contrast;
-}
-
-.bg-warning-faded {
-  background-color: lighten(@warning, 40%);
-  color: @warning;
-}
-
-.bg-primary-faded {
-  background-color: lighten(@primary, 40%);
-  color: @primary;
-}
 
 .text-contrast {
   color: @contrast;
 }
 
-.hover-contrast {
 
-  &:hover,
-  &.active {
-    color: @contrast;
-    border-color: fade(@contrast, 20%);
-  }
-}
-
-.hover-primary {
-
-  &:hover,
-  &.active {
-    color: @primary;
-    border-color: fade(@primary, 20%);
-  }
-}
 
 
 .text-warning {

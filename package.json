@@ -9,12 +9,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/weianofsteel/react-scroll-up-button"
+    "url": ""
   },
   "author": "Nikita Pavlyuk",
   "license": "ISC",
   "dependencies": {
-    "bootstrap-icons": "^1.7.2",
     "clsx": "^1.1.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
