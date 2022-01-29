@@ -1,11 +1,11 @@
 import React, { FC } from "react";
-import { getClassName } from "../untils/getClassName";
+import { pclsx } from "../untils/pclsx";
 
 export const TagIcon: FC = () => (
     <svg version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 442.688 442.688"
-        className={getClassName("icon")}
+        className={pclsx("icon")}
         fill="currentColor"
     >
         <g>

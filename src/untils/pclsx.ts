@@ -7,7 +7,7 @@ import clsx, { ClassValue } from "clsx";
  * 
  * @returns {string}
  */
-export const getClassName = (...classes: ClassValue[]) => {
+export const pclsx = (...classes: ClassValue[]) => {
     if (classes?.length) {
         return clsx(classes).split(" ")
             .map((className) => `${classPrefix}-${className}`).join(" ");

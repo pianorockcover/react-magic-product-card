@@ -1,9 +1,9 @@
 import React, { FC } from "react";
 import { TagIcon } from "../icons/TagIcon";
-import { getClassName } from "../untils/getClassName";
+import { pclsx } from "../untils/pclsx";
 
 export const Tag: FC = ({ children }) => (
-    <div className={getClassName("tag")}>
+    <div className={pclsx("tag")}>
         <TagIcon />
         {children}
     </div>

@@ -1,7 +1,7 @@
 import React, { FC, useMemo } from "react";
 import { StarFilledIcon } from "../icons/StarFilledIcon";
 import { StarIcon } from "../icons/StarIcon";
-import { getClassName } from "../untils/getClassName";
+import { pclsx } from "../untils/pclsx";
 
 interface RateProps {
     amount?: number;
@@ -20,14 +20,14 @@ export const Rate: FC<RateProps> = ({
     const stars = useMemo(() => Math.round(amount || 0), [amount]);
 
     return (
-        <div className={getClassName("rate")}>
-            <div className={getClassName("rate-stars")}>
+        <div className={pclsx("rate")}>
+            <div className={pclsx("rate-stars")}>
                 {new Array(5).fill(null).map((_, i) => {
                     const IconComponent = i < stars ? StarFilledIcon : StarIcon;
                     return <IconComponent />
                 })}
             </div>
-            <div className={getClassName("rate-digit")}>{amount}</div>
+            <div className={pclsx("rate-digit")}>{amount}</div>
         </div>
     )
 };

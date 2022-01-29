@@ -1,12 +1,12 @@
 import React, { FC } from "react";
-import { getClassName } from "../untils/getClassName";
+import { pclsx } from "../untils/pclsx";
 import { PropsWithClassName } from "../untils/types";
 
 export const StarFilledIcon: FC<PropsWithClassName> = () => (
     <svg version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 55.867 55.867"
-        className={getClassName("icon")}
+        className={pclsx("icon")}
         fill="currentColor"
     >
         <g>

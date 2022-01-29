@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { DefinePlugin } = require("webpack");
+const { theme } = require("./theme");
 
 const isProd = process.env.NODE_ENV === "production";
 
@@ -39,6 +40,7 @@ const config = {
                                 relativeUrls: false,
                                 modifyVars: {
                                     classPrefix,
+                                    ...theme,
                                 }
                             },
                         },
