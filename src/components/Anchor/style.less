@@ -1,0 +1,45 @@
+.anchor(@color, @hoverColor) {
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+    text-decoration: none !important;
+    display: inline-flex;
+    align-items: center;
+
+    &,
+    &:link,
+    &:visited,
+    &:active,
+    &:focus {
+        color: @color;
+    }
+
+    @media (min-width: @md) {
+        &:hover {
+            color: @hoverColor;
+        }
+    }
+
+    .@{classPrefix}-icon {
+        margin-right: 10px;
+    }
+}
+
+.@{classPrefix}-anchor-primary {
+    .anchor(@primary, lighten(@primary, 10%));
+}
+
+.@{classPrefix}-anchor-success {
+    .anchor(@success, lighten(@success, 10%));
+}
+
+.@{classPrefix}-anchor-warning {
+    .anchor(@warning, lighten(@warning, 10%));
+}
+
+.@{classPrefix}-anchor-contrast {
+    .anchor(@contrast, lighten(@contrast, 10%));
+}
+
+.@{classPrefix}-anchor-default {
+    .anchor(@default, @primary);
+}

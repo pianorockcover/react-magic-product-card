@@ -1,7 +1,8 @@
 import React, { FC, useMemo } from "react";
-import { StarFilledIcon } from "../icons/StarFilledIcon";
-import { StarIcon } from "../icons/StarIcon";
-import { pclsx } from "../untils/pclsx";
+import { StarFilledIcon } from "../../icons/StarFilledIcon";
+import { StarIcon } from "../../icons/StarIcon";
+import { pclsx } from "../../untils/pclsx";
+import "./style.less";
 
 interface RateProps {
     amount?: number;

@@ -2,12 +2,13 @@ import React, { FC } from "react";
 import { SimpleProductCardProps } from "./types";
 import "./styles/index.less";
 import { pclsx } from "./untils/pclsx";
-import { Label } from "./components/Label";
-import { Tag } from "./components/Tag";
-import { Rate } from "./components/Rate";
+import { Label } from "./components/Label/Label";
+import { Tag } from "./components/Tag/Tag";
+import { Rate } from "./components/Rate/Rate";
 import { HeartIcon } from "./icons/HeartIcon";
 import { CompareIcon } from "./icons/CompareIcon";
 import { Button } from "./components/Button/Button";
+import { Anchor } from "./components/Anchor/Anchor";
 
 export const SimpleProductCard: FC<SimpleProductCardProps> = ({
 
@@ -38,12 +39,31 @@ export const SimpleProductCard: FC<SimpleProductCardProps> = ({
                 </div>
                 <div className={pclsx("details")}>
                     <div className={pclsx("top")}>
-                        <a className={pclsx("category")} href="#" title="Beauty">Beauty</a>
+                        <Anchor
+                            className={pclsx("category")}
+                            to="#"
+                            color="default"
+                            title="Beauty"
+                        >
+                            Beauty
+                        </Anchor>
                         <div className={pclsx("by")}>by
-                        <a className={pclsx("by-link")} href="#" title="Macejkovic - Luettgen">
-                                Macejkovic - Luettgen</a>
+                        <Anchor
+                                className={pclsx("by-link")}
+                                to="#"
+                                title="Macejkovic - Luettgen"
+                            >
+                                Macejkovic - Luettgen
+                        </Anchor>
                         </div>
-                    </div><a className={pclsx("title")} href="product-card.html">Incredible Granite Sausages</a>
+                    </div>
+                    <Anchor
+                        className={pclsx("title")}
+                        to="#"
+                        color="default"
+                    >
+                        Incredible Granite Sausages
+                    </Anchor>
                     <Rate amount={3.3} />
                     <div className={pclsx("price")}>$74.00</div>
                     <div className={pclsx("tags")}>
