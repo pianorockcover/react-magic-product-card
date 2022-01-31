@@ -9,6 +9,7 @@ import { HeartIcon } from "./icons/HeartIcon";
 import { CompareIcon } from "./icons/CompareIcon";
 import { Button } from "./components/Button/Button";
 import { Anchor } from "./components/Anchor/Anchor";
+import { Gallery } from "./components/Gallery/Gallery";
 
 export const SimpleProductCard: FC<SimpleProductCardProps> = ({
 
@@ -32,11 +33,26 @@ export const SimpleProductCard: FC<SimpleProductCardProps> = ({
                         <CompareIcon />
                     </div>
                 </div>
-                <div className={pclsx("side-action", "image-wrapper")}>
-                    <div className={pclsx("open-zoom")} title="Quick view">
-                        <div className="bi bi-zoom-in"></div>
-                    </div><img className={pclsx("image")} src="images/uploads/default/products/8.jpg" alt="Incredible Granite Sausages" />
-                </div>
+                <Gallery
+                    items={[
+                        {
+                            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7sMVwAZSLkBwb3075MB4aufZPsWmiJzf9BA&usqp=CAU',
+                            alt: '33333'
+                        },
+                        {
+                            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJw1lCHRrYa2HChV7U9_N7Yq-ue95f1r9ZjhjZv7GXhwq1vksbDU4qvbcEf-CqHqQu1tM&usqp=CAU',
+                            alt: '3333',
+                        },
+                        {
+                            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7sMVwAZSLkBwb3075MB4aufZPsWmiJzf9BA&usqp=CAU',
+                            alt: '33333'
+                        },
+                        {
+                            src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJw1lCHRrYa2HChV7U9_N7Yq-ue95f1r9ZjhjZv7GXhwq1vksbDU4qvbcEf-CqHqQu1tM&usqp=CAU',
+                            alt: '3333',
+                        },
+                    ]}
+                />
                 <div className={pclsx("details")}>
                     <div className={pclsx("top")}>
                         <Anchor

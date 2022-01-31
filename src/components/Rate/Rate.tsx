@@ -25,7 +25,7 @@ export const Rate: FC<RateProps> = ({
             <div className={pclsx("rate-stars")}>
                 {new Array(5).fill(null).map((_, i) => {
                     const IconComponent = i < stars ? StarFilledIcon : StarIcon;
-                    return <IconComponent />
+                    return <IconComponent key={i} />
                 })}
             </div>
             <div className={pclsx("rate-digit")}>{amount}</div>

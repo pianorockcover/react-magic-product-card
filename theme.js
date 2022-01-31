@@ -13,19 +13,19 @@ class Theme {
     borderRadius = "12px";
 
     /* Breakpoints */
-    sm = 576;
-    md = 768;
-    lg = 992;
-    xl = 1200;
-    xxl = 1400;
+    sm = "576px";
+    md = "768px";
+    lg = "992px";
+    xl = "1200px";
+    xxl = "1400px";
 
     constructor() {
-        this.extraSmall = `(max-width: ${this.sm}px)`;
-        this.small = `(max-width: ${this.md}px)`;
-        this.medium = `(max-width: ${this.lg}px)`;
-        this.large = `(max-width: ${this.xl}px)`;
-        this.extraLarge = `(max-width: ${this.xxl}px)`;
-        this.largest = `(min-width: ${this.xl}px)`;
+        this.extraSmall = `(max-width: ${this.sm})`;
+        this.small = `(max-width: ${this.md})`;
+        this.medium = `(max-width: ${this.lg})`;
+        this.large = `(max-width: ${this.xl})`;
+        this.extraLarge = `(max-width: ${this.xxl})`;
+        this.largest = `(min-width: ${this.xl})`;
     }
 }
 
