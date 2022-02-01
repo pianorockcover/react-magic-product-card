@@ -10,7 +10,7 @@ type Image = {
 
 type NonEmptyArray<T> = [T, ...T[]];
 
-interface GalleryProps {
+export interface GalleryProps {
     items: NonEmptyArray<Image>;
 }
 

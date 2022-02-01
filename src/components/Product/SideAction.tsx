@@ -1,22 +1,33 @@
 import React, { FC, useCallback, useContext } from "react";
 import { pclsx } from "../../untils/pclsx";
 import { IconButton } from "../IconButton/IconButton";
+import { SimpleProductCardProps } from "../types";
 import { ToggleToCompareActionType, ToggleToFavouriteActionType } from "./context/actions";
 import { ProductContext } from "./context/useProductContext";
 
-export const SideActions: FC = () => {
+type SideActionsProps = Pick<
+    SimpleProductCardProps,
+    "onInCompareClick" | "onInFavouriteClick"
+>;
+
+export const SideActions: FC<SideActionsProps> = ({
+    onInCompareClick,
+    onInFavouriteClick
+}) => {
     const { state, dispatch } = useContext(ProductContext);
-    const toggleToFavourite = useCallback(() => (
+    const toggleToFavourite = useCallback(() => {
         dispatch({
             type: ToggleToFavouriteActionType,
-        })
-    ), [state]);
+        });
+        onInFavouriteClick?.(!state.inFavourite);
+    }, [dispatch, state]);
 
-    const toggleToCompare = useCallback(() => (
+    const toggleToCompare = useCallback(() => {
         dispatch({
             type: ToggleToCompareActionType,
-        })
-    ), [state])
+        });
+        onInCompareClick?.(!state.inCompare);
+    }, [dispatch, state]);
 
     return (
         <div className={pclsx("side-actions")} >

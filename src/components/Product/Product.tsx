@@ -1,34 +1,44 @@
-import React, { FC, useCallback, useEffect, useReducer, useRef } from "react";
+import React, { FC, useCallback, useMemo } from "react";
 import { SimpleProductCardProps } from "../types";
 import { pclsx } from "../../untils/pclsx";
 import { Label } from "../Label/Label";
 import { Tag } from "../Tag/Tag";
 import { Rate } from "../Rate/Rate";
-import { HeartIcon } from "../../icons/HeartIcon";
-import { CompareIcon } from "../../icons/CompareIcon";
-import { Button } from "../Button/Button";
 import { Anchor } from "../Anchor/Anchor";
 import { Gallery } from "../Gallery/Gallery";
-import { IconButton } from "../IconButton/IconButton";
 import { Quantity } from "../Quantity/Quantity";
-import "./style/index.less";
 import { ProductContext, useProductContext } from "./context/useProductContext";
 import { SideActions } from "./SideAction";
 import { AddToCardActionType } from "./context/actions";
 import { BuyButton } from "./BuyButton";
+import "./style/index.less";
+import { Price } from "../Price/Price";
+import { useExternalValues } from "./useExternalValues";
 
 export const SimpleProductCard: FC<SimpleProductCardProps> = ({
-    inline,
-    defaultBuyAmount,
-    defaultInCompare,
-    defaultInFavourite,
     buyAmount,
+    category,
+    href,
+    images,
+    inCompare,
+    inFavourite,
+    inline,
+    labels,
+    maxAmount,
+    name,
+    oldPrice,
+    price,
+    rate,
+    onInFavouriteClick,
+    onInCompareClick,
+    tags,
+    vendor,
     ...restProps
 }) => {
     const { state, dispatch, } = useProductContext({
-        defaultBuyAmount,
-        defaultInCompare,
-        defaultInFavourite,
+        buyAmount,
+        inCompare,
+        inFavourite,
     });
 
     const onBuyClick = useCallback((amount: number) => {
@@ -36,99 +46,77 @@ export const SimpleProductCard: FC<SimpleProductCardProps> = ({
         restProps.onBuyClick?.(amount > 0, amount);
     }, [restProps.onBuyClick]);
 
-    const isInitialMount = useRef(true);
+    const providerValue = useMemo(() => ({ state, dispatch, onBuyClick }), [state, dispatch, onBuyClick]);
 
-    // TODO: useDidMountEffect
-    useEffect(() => {
-        if (isInitialMount.current) {
-            isInitialMount.current = false;
-
-            return;
-        }
-
-        if (buyAmount) {
-            dispatch({ type: AddToCardActionType, payload: { amount: buyAmount } });
-        }
-    }, [buyAmount])
+    useExternalValues({
+        inCompare,
+        inFavourite,
+        buyAmount,
+    }, dispatch);
 
     return (
-        <ProductContext.Provider value={{ state, dispatch, onBuyClick }}>
+        <ProductContext.Provider value={providerValue}>
             <div className={pclsx(classPrefix, {
-                inline: inline,
+                inline,
             })}>
                 <div className={pclsx("content")}>
-                    <div className={pclsx("labels")}>
-                        <Label color="contrast">
-                            Gorgeous
-                        </Label>
-                        <Label color="warning">
-                            Handcrafted
-                        </Label>
-                    </div>
-                    <SideActions />
-                    <Gallery
-                        items={[
-                            {
-                                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7sMVwAZSLkBwb3075MB4aufZPsWmiJzf9BA&usqp=CAU',
-                                alt: '33333'
-                            },
-                            {
-                                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJw1lCHRrYa2HChV7U9_N7Yq-ue95f1r9ZjhjZv7GXhwq1vksbDU4qvbcEf-CqHqQu1tM&usqp=CAU',
-                                alt: '3333',
-                            },
-                            {
-                                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7sMVwAZSLkBwb3075MB4aufZPsWmiJzf9BA&usqp=CAU',
-                                alt: '33333'
-                            },
-                            {
-                                src: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJw1lCHRrYa2HChV7U9_N7Yq-ue95f1r9ZjhjZv7GXhwq1vksbDU4qvbcEf-CqHqQu1tM&usqp=CAU',
-                                alt: '3333',
-                            },
-                        ]}
+                    {labels && (
+                        <div className={pclsx("labels")}>
+                            {labels.map(({ color, title }, i) => (
+                                <Label color={color} key={i}>
+                                    {title}
+                                </Label>
+                            ))}
+                        </div>
+                    )}
+                    <SideActions
+                        onInCompareClick={onInCompareClick}
+                        onInFavouriteClick={onInFavouriteClick}
                     />
+                    <Gallery items={images} />
                     <div className={pclsx("details")}>
                         <div className={pclsx("top")}>
                             <Anchor
                                 className={pclsx("category")}
-                                to="#"
+                                to={category.href}
                                 color="default"
-                                title="Beauty"
+                                title={category.title}
                             >
-                                Beauty
-                        </Anchor>
+                                {category.title}
+                            </Anchor>
                             <div className={pclsx("by")}>by
-                        <Anchor
-                                    className={pclsx("by-link")}
-                                    to="#"
-                                    title="Macejkovic - Luettgen"
-                                >
-                                    Macejkovic - Luettgen
-                        </Anchor>
+                                {vendor && (
+                                    <Anchor
+                                        className={pclsx("by-link")}
+                                        to={vendor.href}
+                                        title={vendor.title}
+                                    >
+                                        {vendor.title}
+                                    </Anchor>
+                                )}
                             </div>
                         </div>
                         <Anchor
                             className={pclsx("title")}
-                            to="#"
+                            to={href}
                             color="default"
                         >
-                            Incredible Granite Sausages
-                    </Anchor>
-                        <Rate amount={3.3} />
-                        <div className={pclsx("price")}>
-                            $74.00
-                        <div className={pclsx("price-old-value")}>$108.00</div>
-                        </div>
-                        <div className={pclsx("tags")}>
-                            <Tag>
-                                not available
-                        </Tag>
-                            <Tag>
-                                free shipping
-                        </Tag>
-                        </div>
+                            {name}
+                        </Anchor>
+                        {rate && <Rate amount={rate} />}
+                        <Price value={price} oldValue={oldPrice} />
+                        {tags && (
+                            <div className={pclsx("tags")}>
+                                {tags.map((tag, i) => (
+                                    <Tag key={i}>
+                                        {tag}
+                                    </Tag>
+                                ))}
+                            </div>
+                        )}
                         <div className={pclsx("buttons")}>
                             <BuyButton />
-                            <Quantity defaultValue={1} max={100} />
+                            <Quantity defaultValue={state.buyAmount} max={maxAmount} />
                         </div>
                     </div>
                 </div>

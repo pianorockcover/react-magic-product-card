@@ -14,12 +14,14 @@ export const reducer = (
         case ToggleToFavouriteActionType:
             return {
                 ...state,
-                inFavourite: !state.inFavourite,
+                inFavourite: action?.payload ? !!action?.payload.inFavourite
+                    : !state.inFavourite,
             }
         case ToggleToCompareActionType:
             return {
                 ...state,
-                inCompare: !state.inCompare,
+                inCompare: action?.payload ? !!action?.payload.inCompare
+                    : !state.inCompare,
             }
         default:
             return state;

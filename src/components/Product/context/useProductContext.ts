@@ -1,6 +1,7 @@
 import { createContext, Dispatch, useCallback, useMemo, useReducer } from "react";
+import { useAfterMountEffect } from "../../../untils/useAfterMountEffect";
 import { SimpleProductCardProps } from "../../types";
-import { Action, AddToCardActionType } from "./actions";
+import { Action, AddToCardActionType, ToggleToCompareActionType, ToggleToFavouriteActionType } from "./actions";
 import { reducer } from "./reducer";
 import { getInitialState, SimpleProductCardInitialState, SimpleProductCardState } from "./state";
 
@@ -18,8 +19,8 @@ export const ProductContext = createContext<ProductContextProps>({
     onBuyClick: noop,
 });
 
-export const useProductContext = (params: SimpleProductCardInitialState) => {
-    const [state, dispatch] = useReducer(reducer, getInitialState(params));
+export const useProductContext = ({ buyAmount, inCompare, inFavourite }: SimpleProductCardInitialState) => {
+    const [state, dispatch] = useReducer(reducer, getInitialState({ buyAmount, inCompare, inFavourite }));
 
     return { state, dispatch };
 }

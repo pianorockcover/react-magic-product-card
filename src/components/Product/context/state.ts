@@ -8,11 +8,11 @@ export interface SimpleProductCardState {
 
 export type SimpleProductCardInitialState = Pick<
     SimpleProductCardProps,
-    'defaultBuyAmount' | 'defaultInCompare' | 'defaultInFavourite'
+    'buyAmount' | 'inCompare' | 'inFavourite'
 >;
 
 export const getInitialState = (props: SimpleProductCardInitialState) => ({
-    buyAmount: props.defaultBuyAmount || 0,
-    inFavourite: props.defaultInFavourite || false,
-    inCompare: props.defaultInCompare || false,
+    buyAmount: props.buyAmount || 0,
+    inFavourite: props.inFavourite || false,
+    inCompare: props.inCompare || false,
 });
