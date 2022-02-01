@@ -34,6 +34,7 @@ export const Button: FC<ButtonProps> = ({
         <button
             className={pclsx("button", `button-faded-${color}`, className)}
             disabled={disabled}
+            onClick={onClick}
         >
             <IconComponent />
             <span>{children}</span>

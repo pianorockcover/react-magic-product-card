@@ -3,6 +3,8 @@ export interface SimpleProductCardProps {
     defaultBuyAmount?: number;
     defaultInFavourite?: boolean;
     defaultInCompare?: boolean;
+    onBuyClick?: (add: boolean, amount: number) => void;
+    buyAmount?: number;
 }
 
 export type SimpleProductCardColor =

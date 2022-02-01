@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useCallback, useEffect, useReducer, useRef } from "react";
 import { SimpleProductCardProps } from "../types";
 import { pclsx } from "../../untils/pclsx";
 import { Label } from "../Label/Label";
@@ -14,21 +14,45 @@ import { Quantity } from "../Quantity/Quantity";
 import "./style/index.less";
 import { ProductContext, useProductContext } from "./context/useProductContext";
 import { SideActions } from "./SideAction";
+import { AddToCardActionType } from "./context/actions";
+import { BuyButton } from "./BuyButton";
 
 export const SimpleProductCard: FC<SimpleProductCardProps> = ({
     inline,
     defaultBuyAmount,
     defaultInCompare,
     defaultInFavourite,
+    buyAmount,
+    ...restProps
 }) => {
-    const { state, dispatch } = useProductContext({
+    const { state, dispatch, } = useProductContext({
         defaultBuyAmount,
         defaultInCompare,
         defaultInFavourite,
     });
 
+    const onBuyClick = useCallback((amount: number) => {
+        dispatch({ type: AddToCardActionType, payload: { amount } });
+        restProps.onBuyClick?.(amount > 0, amount);
+    }, [restProps.onBuyClick]);
+
+    const isInitialMount = useRef(true);
+
+    // TODO: useDidMountEffect
+    useEffect(() => {
+        if (isInitialMount.current) {
+            isInitialMount.current = false;
+
+            return;
+        }
+
+        if (buyAmount) {
+            dispatch({ type: AddToCardActionType, payload: { amount: buyAmount } });
+        }
+    }, [buyAmount])
+
     return (
-        <ProductContext.Provider value={{ state, dispatch }}>
+        <ProductContext.Provider value={{ state, dispatch, onBuyClick }}>
             <div className={pclsx(classPrefix, {
                 inline: inline,
             })}>
@@ -103,12 +127,7 @@ export const SimpleProductCard: FC<SimpleProductCardProps> = ({
                         </Tag>
                         </div>
                         <div className={pclsx("buttons")}>
-                            <Button
-                                color={state.buyAmount ? "success" : "primary"}
-                                icon="BagIcon"
-                            >
-                                Add
-                            </Button>
+                            <BuyButton />
                             <Quantity defaultValue={1} max={100} />
                         </div>
                     </div>

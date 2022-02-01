@@ -23,8 +23,7 @@ export const useQuantityValue = ({
     defaultValue,
     ...restProps
 }: QuantityProps): UseQuantityValueReturns => {
-    // const [value, setValue] = useState(defaultValue || 0);
-    const { state, dispatch } = useContext(ProductContext);
+    const { state, onBuyClick } = useContext(ProductContext);
     const max = useMemo(() => restProps.max || Infinity, [restProps.max]);
     const min = useMemo(() => restProps.min || 0, [restProps.min]);
 
@@ -40,10 +39,9 @@ export const useQuantityValue = ({
                     : state.buyAmount
                     + nextValue
         );
-        dispatch({ type: AddToCardActionType, payload: { amount: validValue } });
-        restProps.onChange?.(validValue);
+        onBuyClick(validValue);
     }, [
-        validate, restProps.onChange, state.buyAmount, dispatch,
+        validate, state.buyAmount,
     ]);
 
     const [animationType, setAnimationType] = useState<AnimationType>();

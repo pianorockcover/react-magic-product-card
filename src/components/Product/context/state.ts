@@ -11,7 +11,7 @@ export type SimpleProductCardInitialState = Pick<
     'defaultBuyAmount' | 'defaultInCompare' | 'defaultInFavourite'
 >;
 
-export const getInitialState = (props: SimpleProductCardProps) => ({
+export const getInitialState = (props: SimpleProductCardInitialState) => ({
     buyAmount: props.defaultBuyAmount || 0,
     inFavourite: props.defaultInFavourite || false,
     inCompare: props.defaultInCompare || false,
