@@ -1,6 +1,8 @@
 .productInline() {
     &.@{classPrefix}-inline {
         height: auto;
+        width: auto;
+        max-width: 500px;
 
         .@{classPrefix}-content {
             flex-direction: inherit;
@@ -15,22 +17,16 @@
             }
         }
 
-        &.in-favourite {
-            .@{classPrefix}-by {
-                margin-right: 35px;
-            }
-        }
-
         .@{classPrefix}-buttons {
             display: block;
         }
 
-        .@{classPrefix}-image-wrapper {
+        .@{classPrefix}-gallery-wrapper {
             margin-bottom: 0px;
             padding-top: 10px;
             height: fit-content;
             min-width: 35%;
-            max-width: @imageSize;
+            max-width: 200px;
         }
 
         .@{classPrefix}-details {

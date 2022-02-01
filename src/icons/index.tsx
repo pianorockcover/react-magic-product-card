@@ -5,6 +5,8 @@ import { CompareIcon } from "./CompareIcon";
 import { HeartIcon } from "./HeartIcon";
 import { StarFilledIcon } from "./StarFilledIcon";
 import { TagIcon } from "./TagIcon";
+import { PlusIcon } from "./PlusIcon";
+import { MinusIcon } from "./MinusIcon";
 
 const NoIconComponent = () => <></>;
 
@@ -15,6 +17,8 @@ const icons = {
     HeartIcon,
     StarFilledIcon,
     TagIcon,
+    PlusIcon,
+    MinusIcon,
 };
 
 export type IconType = keyof typeof icons;

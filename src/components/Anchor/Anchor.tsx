@@ -1,13 +1,12 @@
 import React, { FC, useMemo } from "react";
-import { SimpleProductCardColor } from "../../types";
+import { SimpleProductCardColor } from "../types";
 import { pclsx } from "../../untils/pclsx";
-import { PropsWithClassName } from "../../untils/types";
+import { CommonProps } from "../../untils/types";
 import "./style.less";
 
-type AnchorProps = PropsWithClassName & {
+type AnchorProps = CommonProps & {
     to: string;
     newTab?: boolean;
-    title?: string;
     color?: SimpleProductCardColor;
 }
 
@@ -24,21 +23,17 @@ export const Anchor: FC<AnchorProps> = ({
     title,
     children,
     color,
-    ...restProps
+    className,
 }) => {
     const colorClass = useMemo(() => `anchor-${color || "primary"}`, [color]);
     const target = useMemo(() => (newTab ? { target: "_blank" } : {}), [newTab]);
-    const className = useMemo(() => `${pclsx("anchor", colorClass)} ${restProps.className}`, [
-        colorClass,
-        restProps.className,
-    ]);
 
     return (
         <a
             href={to}
             title={title}
             {...target}
-            className={className}
+            className={pclsx("anchor", colorClass, className)}
         >
             {children}
         </a>

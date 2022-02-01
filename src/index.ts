@@ -1,4 +1,4 @@
-import { SimpleProductCard } from "./SimpleProductCard";
+import { SimpleProductCard } from "./components/Product/Product";
 
-export * from "./SimpleProductCard";
-export * from "./types";
+export * from "./components/Product/Product";
+export * from "./components/types";

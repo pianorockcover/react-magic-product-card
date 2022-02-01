@@ -1,8 +1,8 @@
 import React, { FC } from "react";
 import { pclsx } from "../untils/pclsx";
-import { PropsWithClassName } from "../untils/types";
+import { CommonProps } from "../untils/types";
 
-export const StarIcon: FC<PropsWithClassName> = () => (
+export const StarIcon: FC<CommonProps> = () => (
     <svg version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 243.317 243.317"

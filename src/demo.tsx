@@ -1,5 +1,8 @@
 import React from "react";
 import { render } from "react-dom";
-import { SimpleProductCard } from "./SimpleProductCard";
+import { SimpleProductCard } from "./components/Product/Product";
 
-render(<SimpleProductCard />, document.body);
+render(<SimpleProductCard
+    defaultInCompare={true}
+    defaultInFavourite={true}
+/>, document.body);

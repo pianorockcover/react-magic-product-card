@@ -1,0 +1,27 @@
+.@{classPrefix} {
+    &-icon-button {
+        color: @default;
+        background: #ffffff;
+        border: 1px solid #eeeeee;
+        border-radius: 100%;
+        padding: 8px 7px 7px 7px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: color .2s ease-in-out,
+            border-color .2s ease-in-out,
+            transform .2s ease-in-out;
+
+        .@{classPrefix}-icon {
+            width: 15px;
+            height: 15px;
+        }
+
+        &[disabled] {
+            background-color: #f4f4f4;
+        }
+    }
+}

@@ -5,38 +5,37 @@ import { pclsx } from "../../untils/pclsx";
 import { CommonProps } from "../../untils/types";
 import "./style.less";
 
-type ButtonProps = CommonProps & {
-    color?: SimpleProductCardColor;
+type IconButtonProps = CommonProps & {
+    hoverColor?: SimpleProductCardColor;
     onClick?: () => void;
     icon?: IconType;
-}
+};
 
 /**
- * Button Element
+ * Rounded button with icon
  * 
- * @param {ButtonProps} props
+ * @param {IconButtonProps} props
  * 
  * @returns {JSX.Element} 
  */
-export const Button: FC<ButtonProps> = ({
-    children,
+export const IconButton: FC<IconButtonProps> = ({
     onClick,
     icon,
     className,
     disabled,
+    active,
     ...restProps
 }) => {
-    const color = useMemo(() => restProps.color || "default", [restProps.color]);
-
+    const hoverColor = useMemo(() => restProps.hoverColor || "default", [restProps.hoverColor]);
     const IconComponent = useMemo(() => getIcon(icon), [icon]);
 
     return (
         <button
-            className={pclsx("button", `button-faded-${color}`, className)}
+            className={pclsx("icon-button", `hover-${hoverColor}`, className)}
             disabled={disabled}
+            onClick={onClick}
         >
             <IconComponent />
-            <span>{children}</span>
         </button>
     )
 }

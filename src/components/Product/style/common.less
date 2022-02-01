@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+.@{classPrefix} {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.@{classPrefix}-disabled,
+[disabled] {
+  pointer-events: none;
+  cursor: not-allowed;
+  opacity: .8;
+}
+
+/* Backgrounds */
+.@{classPrefix}-bg-success-faded {
+  background-color: lighten(@success, 40%);
+  color: @success;
+}
+
+.@{classPrefix}-bg-contrast-faded {
+  background-color: lighten(@contrast, 40%);
+  color: @contrast;
+}
+
+.@{classPrefix}-bg-warning-faded {
+  background-color: lighten(@warning, 40%);
+  color: @warning;
+}
+
+.@{classPrefix}-bg-primary-faded {
+  background-color: lighten(@primary, 40%);
+  color: @primary;
+}
+
+.@{classPrefix}-bg-default-faded {
+  background-color: lighten(@default, 40%);
+  color: @default;
+}
+
+/* --- */
+
+/* Hovers */
+
+.@{classPrefix}-hover-contrast {
+
+  &:hover,
+  &.@{classPrefix}-active {
+    color: @contrast;
+    border-color: fade(@contrast, 20%);
+  }
+}
+
+.@{classPrefix}-hover-primary {
+
+  &:hover,
+  &.@{classPrefix}-active {
+    color: @primary;
+    border-color: fade(@primary, 20%);
+  }
+}
+
+.@{classPrefix}-hover-success {
+
+  &:hover,
+  &.@{classPrefix}-active {
+    color: @success;
+    border-color: fade(@success, 20%);
+  }
+}
+
+.@{classPrefix}-hover-warning {
+
+  &:hover,
+  &.@{classPrefix}-active {
+    color: @warning;
+    border-color: fade(@warning, 20%);
+  }
+}
+
+.@{classPrefix}-hover-default {
+
+  &:hover,
+  &.@{classPrefix}-active {
+    color: @default;
+    border-color: fade(@default, 20%);
+  }
+}
+
+/* --- */

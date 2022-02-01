@@ -2,17 +2,16 @@ import React, { FC } from "react";
 import { pclsx } from "../untils/pclsx";
 import { CommonProps } from "../untils/types";
 
-export const CompareIcon: FC<CommonProps> = () => (
+export const MinusIcon: FC<CommonProps> = () => (
     <svg version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 490 490"
+        viewBox="0 0 42 42"
         className={pclsx("icon")}
         fill="currentColor"
     >
         <g>
-            <rect x="269.785" y="366.749" width="220.215" height="123.251" />
-            <rect x="130.049" y="183.374" width="359.951" height="123.251" />
-            <rect width="490" height="123.252" />
+            <path d="M37.059,16H26H16H4.941C2.224,16,0,18.282,0,21s2.224,5,4.941,5H16h10h11.059C39.776,26,42,23.718,42,21
+	S39.776,16,37.059,16z"/>
         </g>
     </svg>
 );

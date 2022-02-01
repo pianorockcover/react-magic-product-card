@@ -47,18 +47,16 @@ export const Gallery: FC<GalleryProps> = ({
             />
             {items.length > 1 && (
                 <div className={pclsx("gallery-progress")}>
-                    {new Array(items.length)
-                        .fill(null)
-                        .map((_, i) => (
-                            <GalleryProgress
-                                onClick={setItemIndex}
-                                key={i}
-                                index={i}
-                                activeIndex={itemIndex}
-                                speed={animationSpeed}
-                                showAnimation={showAnimation}
-                            />
-                        ))}
+                    {items.map((_, i) => (
+                        <GalleryProgress
+                            onClick={setItemIndex}
+                            key={i}
+                            index={i}
+                            activeIndex={itemIndex}
+                            speed={animationSpeed}
+                            showAnimation={showAnimation}
+                        />
+                    ))}
                 </div>
             )}
         </div>

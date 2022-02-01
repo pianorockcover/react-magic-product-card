@@ -10,7 +10,11 @@ import clsx, { ClassValue } from "clsx";
 export const pclsx = (...classes: ClassValue[]) => {
     if (classes?.length) {
         return clsx(classes).split(" ")
-            .map((className) => `${classPrefix}-${className}`).join(" ");
+            .map((className) => (
+                !className ? ''
+                    : className.includes(classPrefix) ? className
+                        : `${classPrefix}-${className}`
+            )).join(" ");
     }
 
     return classPrefix;

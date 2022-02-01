@@ -10,6 +10,12 @@
         padding: 15px;
         position: relative;
         flex-direction: column;
+
+        &:hover {
+            .@{classPrefix}-gallery-progress {
+                opacity: 1;
+            }
+        }
     }
 
     &-image {
@@ -44,12 +50,6 @@
                 height: 100%;
                 transition: width .05s ease-in-out;
             }
-        }
-    }
-
-    &:hover {
-        .@{classPrefix}-gallery-progress {
-            opacity: 1;
         }
     }
 }
