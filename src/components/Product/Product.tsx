@@ -103,9 +103,12 @@ export const SimpleProductCard: FC<SimpleProductCardProps> = ({
                         </Tag>
                         </div>
                         <div className={pclsx("buttons")}>
-                            <Button color="primary" icon="BagIcon">
+                            <Button
+                                color={state.buyAmount ? "success" : "primary"}
+                                icon="BagIcon"
+                            >
                                 Add
-                        </Button>
+                            </Button>
                             <Quantity defaultValue={1} max={100} />
                         </div>
                     </div>

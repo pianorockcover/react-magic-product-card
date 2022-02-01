@@ -1,22 +1,20 @@
 import React, { FC, useCallback, useContext } from "react";
 import { pclsx } from "../../untils/pclsx";
 import { IconButton } from "../IconButton/IconButton";
-import { AddToCompareActionType, AddToFavouriteActionType, RemoveFromCompareActionType, RemoveFromFavouriteActionType } from "./context/actions";
+import { ToggleToCompareActionType, ToggleToFavouriteActionType } from "./context/actions";
 import { ProductContext } from "./context/useProductContext";
 
 export const SideActions: FC = () => {
     const { state, dispatch } = useContext(ProductContext);
     const toggleToFavourite = useCallback(() => (
         dispatch({
-            type: state.inFavourite ? RemoveFromFavouriteActionType
-                : AddToFavouriteActionType
+            type: ToggleToFavouriteActionType,
         })
     ), [state]);
 
     const toggleToCompare = useCallback(() => (
         dispatch({
-            type: state.inCompare ? RemoveFromCompareActionType
-                : AddToCompareActionType
+            type: ToggleToCompareActionType,
         })
     ), [state])
 

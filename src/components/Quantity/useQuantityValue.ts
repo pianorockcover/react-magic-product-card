@@ -1,4 +1,6 @@
-import { useState, useMemo, useCallback, useEffect, useRef } from "react";
+import { useState, useMemo, useCallback, useEffect, useRef, useContext } from "react";
+import { AddToCardActionType } from "../Product/context/actions";
+import { ProductContext } from "../Product/context/useProductContext";
 import { quantityAnimationDuration, QuantityProps } from "./Quantity";
 
 type AnimationType = "adding" | "removing";
@@ -21,7 +23,8 @@ export const useQuantityValue = ({
     defaultValue,
     ...restProps
 }: QuantityProps): UseQuantityValueReturns => {
-    const [value, setValue] = useState(defaultValue || 0);
+    // const [value, setValue] = useState(defaultValue || 0);
+    const { state, dispatch } = useContext(ProductContext);
     const max = useMemo(() => restProps.max || Infinity, [restProps.max]);
     const min = useMemo(() => restProps.min || 0, [restProps.min]);
 
@@ -32,35 +35,47 @@ export const useQuantityValue = ({
     const onChange = useCallback((nextValue: number, decrement?: boolean) => {
         const validValue = validate(
             decrement === undefined ? nextValue
-                : decrement === true ? value - nextValue
-                    : value + nextValue
+                : decrement === true ? state.buyAmount
+                    - nextValue
+                    : state.buyAmount
+                    + nextValue
         );
-        setValue(validValue);
+        dispatch({ type: AddToCardActionType, payload: { amount: validValue } });
         restProps.onChange?.(validValue);
-    }, [validate, restProps.onChange, value]);
+    }, [
+        validate, restProps.onChange, state.buyAmount, dispatch,
+    ]);
 
     const [animationType, setAnimationType] = useState<AnimationType>();
 
-    const prevValue = useRef(value);
+    const prevValue = useRef(state.buyAmount
+    );
 
     useEffect(() => {
-        if (value !== prevValue.current) {
+        if (state.buyAmount
+            !== prevValue.current) {
             setAnimationType(
-                value > prevValue.current ? "adding"
+                state.buyAmount
+                    > prevValue.current ? "adding"
                     : "removing"
             );
 
             setTimeout(() => setAnimationType(undefined), quantityAnimationDuration);
 
-            prevValue.current = value;
+            prevValue.current = state.buyAmount
+                ;
         }
-    }, [value]);
+    }, [state.buyAmount
+    ]);
 
     return {
         onChange,
-        addDisabled: value === max,
-        removeDisabled: value === min,
-        value,
+        addDisabled: state.buyAmount
+            === max,
+        removeDisabled: state.buyAmount
+            === min,
+        value: state.buyAmount
+        ,
         animationType,
     };
 };

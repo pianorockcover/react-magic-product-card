@@ -1,4 +1,4 @@
-import { Action, AddToCardAactionType, AddToCompareActionType, AddToFavouriteActionType, RemoveFromCardActionType, RemoveFromCompareActionType, RemoveFromFavouriteActionType } from "./actions";
+import { Action, AddToCardActionType, ToggleToCompareActionType, ToggleToFavouriteActionType } from "./actions";
 import { SimpleProductCardState } from "./state";
 
 export const reducer = (
@@ -6,35 +6,20 @@ export const reducer = (
     action: Action,
 ): SimpleProductCardState => {
     switch (action.type) {
-        case AddToCardAactionType:
+        case AddToCardActionType:
             return {
                 ...state,
-                buyAmount: state.buyAmount + action.payload.amount,
+                buyAmount: action.payload.amount,
             }
-        case RemoveFromCardActionType:
+        case ToggleToFavouriteActionType:
             return {
                 ...state,
-                buyAmount: state.buyAmount - action.payload.amount,
+                inFavourite: !state.inFavourite,
             }
-        case AddToFavouriteActionType:
+        case ToggleToCompareActionType:
             return {
                 ...state,
-                inFavourite: true,
-            }
-        case RemoveFromFavouriteActionType:
-            return {
-                ...state,
-                inFavourite: false,
-            }
-        case AddToCompareActionType:
-            return {
-                ...state,
-                inCompare: true,
-            }
-        case RemoveFromCompareActionType:
-            return {
-                ...state,
-                inCompare: false,
+                inCompare: !state.inCompare,
             }
         default:
             return state;

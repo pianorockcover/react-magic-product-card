@@ -1,45 +1,24 @@
-export const AddToCardAactionType = "AddToCardAction";
-export const RemoveFromCardActionType = "RemoveFromCardAction";
+export const AddToCardActionType = "AddToCardAction";
 
-type CardActionPayload = {
+type ActionAddToCard = {
+    type: typeof AddToCardActionType,
     payload: {
         amount: number,
-    }
+    },
 }
 
-type ActionAddToCard = CardActionPayload & {
-    type: typeof AddToCardAactionType,
-}
-
-type ActionRemoveFromCard = CardActionPayload & {
-    type: typeof RemoveFromCardActionType,
-}
-
-export const AddToFavouriteActionType = "AddToFavouriteAction";
-export const RemoveFromFavouriteActionType = "RemoveFromFavouriteAction";
+export const ToggleToFavouriteActionType = "ToggleToFavouriteAction";
 
 type ActionAddToFavourite = {
-    type: typeof AddToFavouriteActionType,
+    type: typeof ToggleToFavouriteActionType,
 }
 
-type ActionRemoveFromFavourite = {
-    type: typeof RemoveFromFavouriteActionType,
-}
-
-export const AddToCompareActionType = "AddToCompareAction";
-export const RemoveFromCompareActionType = "RemoveFromCompareAction";
+export const ToggleToCompareActionType = "ToggleToCompareAction";
 
 type ActionAddToCompare = {
-    type: typeof AddToCompareActionType,
-}
-
-type ActionRemoveFromCompare = {
-    type: typeof RemoveFromCompareActionType,
+    type: typeof ToggleToCompareActionType,
 }
 
 export type Action = ActionAddToCard
-    | ActionRemoveFromCard
     | ActionAddToFavourite
-    | ActionRemoveFromFavourite
-    | ActionAddToCompare
-    | ActionRemoveFromCompare;
+    | ActionAddToCompare;
