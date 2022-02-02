@@ -1,6 +1,6 @@
-import React, { FC, useCallback, useEffect, useMemo, useState } from "react";
+import React, { FC, useCallback, useMemo, useState } from "react";
 import { pclsx } from "../../untils/pclsx";
-import { defaultAnimationSpeed, GalleryProgress } from "./GalleryProgress";
+import { GalleryProgress } from "./GalleryProgress";
 import "./style.less";
 
 type Image = {
@@ -30,10 +30,6 @@ export const Gallery: FC<GalleryProps> = ({
         setItemIndex(0);
     }, []);
 
-    const animationSpeed = useMemo(() => (
-        defaultAnimationSpeed / items.length
-    ), [items.length]);
-
     return (
         <div
             className={pclsx("gallery-wrapper")}
@@ -53,7 +49,6 @@ export const Gallery: FC<GalleryProps> = ({
                             key={i}
                             index={i}
                             activeIndex={itemIndex}
-                            speed={animationSpeed}
                             showAnimation={showAnimation}
                         />
                     ))}

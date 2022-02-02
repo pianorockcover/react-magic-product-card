@@ -49,7 +49,27 @@
                 background: #8b8b8b;
                 height: 100%;
                 transition: width .05s ease-in-out;
+                width: 0;
+
+                &.@{classPrefix}-visited {
+                    width: 100%;
+                }
+
+                &.@{classPrefix}-animated {
+                    animation-name: galleryProgressAnimation;
+                    animation-timing-function: linear;
+                }
             }
         }
+    }
+}
+
+@keyframes galleryProgressAnimation {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
     }
 }
