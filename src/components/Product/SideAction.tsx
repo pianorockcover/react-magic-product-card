@@ -6,49 +6,55 @@ import { ToggleToCompareActionType, ToggleToFavouriteActionType } from "./contex
 import { ProductContext } from "./context/useProductContext";
 
 type SideActionsProps = Pick<
-    SimpleProductCardProps,
-    "onInCompareClick" | "onInFavouriteClick"
+  SimpleProductCardProps,
+  "onInCompareClick" | "onInFavouriteClick"
 >;
 
+/**
+ * Add to compare and add to favourite buttons
+ *
+ * @param {SideActionsProps} props
+ * @returns {JSX.Element}
+ */
 export const SideActions: FC<SideActionsProps> = ({
-    onInCompareClick,
-    onInFavouriteClick
+  onInCompareClick,
+  onInFavouriteClick,
 }) => {
-    const { state, dispatch } = useContext(ProductContext);
-    const toggleToFavourite = useCallback(() => {
-        dispatch({
-            type: ToggleToFavouriteActionType,
-        });
-        onInFavouriteClick?.(!state.inFavourite);
-    }, [dispatch, state]);
+  const { state, dispatch } = useContext(ProductContext);
+  const toggleToFavourite = useCallback(() => {
+    dispatch({
+      type: ToggleToFavouriteActionType,
+    });
+    onInFavouriteClick?.(!state.inFavourite);
+  }, [dispatch, state]);
 
-    const toggleToCompare = useCallback(() => {
-        dispatch({
-            type: ToggleToCompareActionType,
-        });
-        onInCompareClick?.(!state.inCompare);
-    }, [dispatch, state]);
+  const toggleToCompare = useCallback(() => {
+    dispatch({
+      type: ToggleToCompareActionType,
+    });
+    onInCompareClick?.(!state.inCompare);
+  }, [dispatch, state]);
 
-    return (
-        <div className={pclsx("side-actions")} >
-            <IconButton
-                icon="HeartIcon"
-                hoverColor="contrast"
-                title="Add to favourite"
-                className={pclsx("side-action", {
-                    active: state.inFavourite,
-                })}
-                onClick={toggleToFavourite}
-            />
-            <IconButton
-                icon="CompareIcon"
-                hoverColor="primary"
-                className={pclsx("side-action", {
-                    active: state.inCompare,
-                })}
-                title="Add to compare"
-                onClick={toggleToCompare}
-            />
-        </div >
-    )
-}
+  return (
+    <div className={pclsx("side-actions")}>
+      <IconButton
+        icon="HeartIcon"
+        hoverColor="contrast"
+        title="Add to favourite"
+        className={pclsx("side-action", {
+          active: state.inFavourite,
+        })}
+        onClick={toggleToFavourite}
+      />
+      <IconButton
+        icon="CompareIcon"
+        hoverColor="primary"
+        className={pclsx("side-action", {
+          active: state.inCompare,
+        })}
+        title="Add to compare"
+        onClick={toggleToCompare}
+      />
+    </div>
+  );
+};

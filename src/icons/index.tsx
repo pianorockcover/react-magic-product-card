@@ -11,25 +11,25 @@ import { MinusIcon } from "./MinusIcon";
 const NoIconComponent = () => <></>;
 
 const icons = {
-    BagIcon,
-    CheckIcon,
-    CompareIcon,
-    HeartIcon,
-    StarFilledIcon,
-    TagIcon,
-    PlusIcon,
-    MinusIcon,
+  BagIcon,
+  CheckIcon,
+  CompareIcon,
+  HeartIcon,
+  StarFilledIcon,
+  TagIcon,
+  PlusIcon,
+  MinusIcon,
+  NoIconComponent,
 };
 
 export type IconType = keyof typeof icons;
 
 /**
  * Returns a component of icon given by its name
- * 
+ *
  * @param {string} iconName
- * 
- * @returns {FC} 
+ *
+ * @returns {FC}
  */
-export const getIcon = (iconName?: IconType) => {
-    return iconName && icons[iconName] ? icons[iconName] : NoIconComponent;
-}
+export const getIcon = (iconName?: IconType) => (iconName && icons[iconName]
+  ? icons[iconName] : NoIconComponent);

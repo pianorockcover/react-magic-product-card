@@ -1,34 +1,106 @@
 import { GalleryProps } from "./Gallery/Gallery";
 
 export interface SimpleProductCardProps {
-    inline?: boolean;
-    onBuyClick?: (add: boolean, amount: number) => void;
-    onInFavouriteClick?: (value: boolean) => void;
-    onInCompareClick?: (value: boolean) => void;
-    buyAmount?: number;
-    inFavourite?: boolean;
-    inCompare?: boolean;
-    labels?: {
-        color?: SimpleProductCardColor;
-        title: string;
-    }[];
-    images: GalleryProps["items"];
-    vendor?: {
-        title: string;
-        href: string;
-    };
-    category: {
-        title: string;
-        href: string;
-    };
-    name: string;
+  /**
+   * Inline mode
+   */
+  inline?: boolean;
+  /**
+   * Click on Buy/Remove button
+   */
+  onBuyClick?: (add: boolean, amount: number) => void;
+  /**
+   * Click on Add in favoutite icon button
+   */
+  onInFavouriteClick?: (value: boolean) => void;
+  /**
+   * Click on Add in compare icon button
+   */
+  onInCompareClick?: (value: boolean) => void;
+  /**
+   * Amount of items to buy
+   */
+  buyAmount?: number;
+  /**
+   * Is product in favourite
+   */
+  inFavourite?: boolean;
+  /**
+   * Is product in compare
+   */
+  inCompare?: boolean;
+  /**
+   * Product labeld, lise "NEW", "BIG SALE", etc.
+   */
+  labels?: {
+    /**
+     * Label color
+     */
+    color?: SimpleProductCardColor;
+    /**
+     * Label title
+     */
+    title: string;
+  }[];
+  /**
+   * Product images
+   */
+  images: GalleryProps["items"];
+  /**
+   * Vendor information
+   */
+  vendor?: {
+    /**
+     * Vendor name
+     */
+    title: string;
+    /**
+     * Link to vendor's website
+     */
     href: string;
-    rate?: number;
-    price: string;
-    oldPrice?: string;
-    tags?: string[];
-    maxAmount?: number;
+  };
+  /**
+   * Product's catalog category
+   */
+  category: {
+    /**
+     * Category name
+     */
+    title: string;
+    /**
+     * Link to category page
+     */
+    href: string;
+  };
+  /**
+   * Product name
+   */
+  name: string;
+  /**
+   * Product page link
+   */
+  href: string;
+  /**
+   * Product rate
+   */
+  rate?: number;
+  /**
+   * Actual price
+   */
+  price: string;
+  /**
+   * Old price
+   */
+  oldPrice?: string;
+  /**
+   * Product tags, like "free delivery", "not availabale", etc.
+   */
+  tags?: string[];
+  /**
+   * Max available items to buy
+   */
+  maxAmount?: number;
 }
 
 export type SimpleProductCardColor =
-    "default" | "primary" | "contrast" | "warning" | "success";
+  "default" | "primary" | "contrast" | "warning" | "success";

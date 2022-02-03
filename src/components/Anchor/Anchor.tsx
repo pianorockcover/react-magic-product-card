@@ -5,37 +5,42 @@ import { CommonProps } from "../../untils/types";
 import "./style.less";
 
 type AnchorProps = CommonProps & {
-    to: string;
-    newTab?: boolean;
-    color?: SimpleProductCardColor;
-}
+  to: string;
+  newTab?: boolean;
+  color?: SimpleProductCardColor;
+};
 
 /**
  * Anchor element
- * 
+ *
  * @param {props} AnchorProps
- * 
- * @returns {JSX.Element} 
+ *
+ * @returns {JSX.Element}
  */
 export const Anchor: FC<AnchorProps> = ({
-    to,
-    newTab,
-    title,
-    children,
-    color,
-    className,
+  to,
+  newTab,
+  title,
+  children,
+  color,
+  className,
 }) => {
-    const colorClass = useMemo(() => `anchor-${color || "primary"}`, [color]);
-    const target = useMemo(() => (newTab ? { target: "_blank" } : {}), [newTab]);
+  const colorClass = useMemo(() => `anchor-${color}`, [color]);
+  const target = useMemo(() => (newTab ? { target: "_blank" } : {}), [newTab]);
 
-    return (
-        <a
-            href={to}
-            title={title}
-            {...target}
-            className={pclsx("anchor", colorClass, className)}
-        >
-            {children}
-        </a>
-    );
-}
+  return (
+    <a
+      href={to}
+      title={title}
+      {...target}
+      className={pclsx("anchor", colorClass, className)}
+    >
+      {children}
+    </a>
+  );
+};
+
+Anchor.defaultProps = {
+  newTab: false,
+  color: "primary",
+};

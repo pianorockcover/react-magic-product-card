@@ -6,38 +6,43 @@ import { CommonProps } from "../../untils/types";
 import "./style.less";
 
 type ButtonProps = CommonProps & {
-    color?: SimpleProductCardColor;
-    onClick?: () => void;
-    icon?: IconType;
+  color?: SimpleProductCardColor;
+  onClick?: () => void;
+  icon?: IconType;
 }
 
 /**
  * Button Element
- * 
+ *
  * @param {ButtonProps} props
- * 
- * @returns {JSX.Element} 
+ *
+ * @returns {JSX.Element}
  */
 export const Button: FC<ButtonProps> = ({
-    children,
-    onClick,
-    icon,
-    className,
-    disabled,
-    ...restProps
+  children,
+  onClick,
+  icon,
+  className,
+  disabled,
+  color,
 }) => {
-    const color = useMemo(() => restProps.color || "default", [restProps.color]);
+  const IconComponent = useMemo(() => getIcon(icon), [icon]);
 
-    const IconComponent = useMemo(() => getIcon(icon), [icon]);
+  return (
+    <button
+      className={pclsx("button", `button-faded-${color}`, className)}
+      disabled={disabled}
+      onClick={onClick}
+      type="button"
+    >
+      <IconComponent />
+      <span>{children}</span>
+    </button>
+  );
+};
 
-    return (
-        <button
-            className={pclsx("button", `button-faded-${color}`, className)}
-            disabled={disabled}
-            onClick={onClick}
-        >
-            <IconComponent />
-            <span>{children}</span>
-        </button>
-    )
-}
+Button.defaultProps = {
+  color: "default",
+  onClick: undefined,
+  icon: "NoIconComponent",
+};

@@ -6,36 +6,41 @@ import { CommonProps } from "../../untils/types";
 import "./style.less";
 
 type IconButtonProps = CommonProps & {
-    hoverColor?: SimpleProductCardColor;
-    onClick?: () => void;
-    icon?: IconType;
+  hoverColor?: SimpleProductCardColor;
+  onClick?: () => void;
+  icon: IconType;
 };
 
 /**
  * Rounded button with icon
- * 
+ *
  * @param {IconButtonProps} props
- * 
- * @returns {JSX.Element} 
+ *
+ * @returns {JSX.Element}
  */
 export const IconButton: FC<IconButtonProps> = ({
-    onClick,
-    icon,
-    className,
-    disabled,
-    active,
-    ...restProps
+  onClick,
+  icon,
+  className,
+  disabled,
+  active,
+  hoverColor,
 }) => {
-    const hoverColor = useMemo(() => restProps.hoverColor || "default", [restProps.hoverColor]);
-    const IconComponent = useMemo(() => getIcon(icon), [icon]);
+  const IconComponent = useMemo(() => getIcon(icon), [icon]);
 
-    return (
-        <button
-            className={pclsx("icon-button", `hover-${hoverColor}`, className)}
-            disabled={disabled}
-            onClick={onClick}
-        >
-            <IconComponent />
-        </button>
-    )
-}
+  return (
+    <button
+      className={pclsx("icon-button", `hover-${hoverColor}`, className)}
+      disabled={disabled}
+      onClick={onClick}
+      type="button"
+    >
+      <IconComponent />
+    </button>
+  );
+};
+
+IconButton.defaultProps = {
+  hoverColor: "default",
+  onClick: undefined,
+};

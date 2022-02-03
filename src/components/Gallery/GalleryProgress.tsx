@@ -3,48 +3,63 @@ import { pclsx } from "../../untils/pclsx";
 
 const animationSpeed = 1500;
 const barStyle = {
-    animationDuration: `${animationSpeed}ms`,
+  animationDuration: `${animationSpeed}ms`,
 };
 
 interface GalleryProgressProps {
-    onClick: (index: number) => void;
-    activeIndex?: number;
-    index: number;
-    showAnimation?: boolean;
+  showItem: (index: number) => void;
+  activeIndex?: number;
+  index: number;
+  showAnimation?: boolean;
 }
 
+/**
+ * Images gallery progress bar
+ *
+ * @param {GalleryProgressProps} props
+ * @returns {JSX.Element}
+ */
 export const GalleryProgress: FC<GalleryProgressProps> = ({
-    activeIndex,
-    index,
-    showAnimation,
-    onClick,
+  activeIndex,
+  index,
+  showAnimation,
+  showItem,
 }) => {
-    const isAnimated = useMemo(() => showAnimation && activeIndex === index, [
-        showAnimation, activeIndex,
-    ]);
+  const isAnimated = useMemo(() => showAnimation && activeIndex === index, [
+    showAnimation, activeIndex,
+  ]);
 
-    useEffect(() => {
+  useEffect(() => {
+    if (isAnimated) {
+      setTimeout(() => {
         if (isAnimated) {
-            setTimeout(() => {
-                if (isAnimated) {
-                    onClick(index + 1);
-                }
-            }, animationSpeed);
+          showItem(index + 1);
         }
-    }, [isAnimated]);
+      }, animationSpeed);
+    }
+  }, [isAnimated]);
 
-    console.log(activeIndex, index);
+  const stateClasses = useMemo(() => (
+    {
+      animated: isAnimated,
+      visited: activeIndex && activeIndex > index,
+    }
+  ), [isAnimated, activeIndex, index]);
 
-    return (
-        <div className={pclsx("gallery-progress-item")}>
-            <div
-                className={pclsx(
-                    "gallery-progress-item-bar", {
-                    animated: isAnimated,
-                    visited: activeIndex && activeIndex > index,
-                })}
-                style={barStyle}
-            />
-        </div>
-    );
-}
+  return (
+    <div className={pclsx("gallery-progress-item")}>
+      <div
+        className={pclsx(
+          "gallery-progress-item-bar",
+          stateClasses,
+        )}
+        style={barStyle}
+      />
+    </div>
+  );
+};
+
+GalleryProgress.defaultProps = {
+  activeIndex: undefined,
+  showAnimation: undefined,
+};

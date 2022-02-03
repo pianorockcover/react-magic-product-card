@@ -1,59 +1,65 @@
-import React, { FC, useCallback, useMemo, useState } from "react";
+import React, { FC, useCallback, useState } from "react";
 import { pclsx } from "../../untils/pclsx";
 import { GalleryProgress } from "./GalleryProgress";
 import "./style.less";
 
 type Image = {
-    src: string;
-    alt?: string;
+  src: string;
+  alt?: string;
 }
 
 type NonEmptyArray<T> = [T, ...T[]];
 
 export interface GalleryProps {
-    items: NonEmptyArray<Image>;
+  items: NonEmptyArray<Image>;
 }
 
+/**
+ * Images gallery
+ *
+ * @param {GalleryProps} props
+ * @returns {JSX.Element}
+ */
 export const Gallery: FC<GalleryProps> = ({
-    items,
+  items,
 }) => {
-    const [itemIndex, pureSetItemIndex] = useState(0);
-    const setItemIndex = useCallback((nextIntex: number) => (
-        pureSetItemIndex(nextIntex === items.length ? 0 : nextIntex)
-    ), [items, itemIndex]);
+  const [itemIndex, pureSetItemIndex] = useState(0);
+  const setItemIndex = useCallback((nextIntex: number) => (
+    pureSetItemIndex(nextIntex === items.length ? 0 : nextIntex)
+  ), [items, itemIndex]);
 
-    const [showAnimation, setShowAnimation] = useState<boolean>();
+  const [showAnimation, setShowAnimation] = useState<boolean>();
 
-    const onMouseEnter = useCallback(() => setShowAnimation(true), []);
-    const onMouseLeave = useCallback(() => {
-        setShowAnimation(false);
-        setItemIndex(0);
-    }, []);
+  const onMouseEnter = useCallback(() => setShowAnimation(true), []);
+  const onMouseLeave = useCallback(() => {
+    setShowAnimation(false);
+    setItemIndex(0);
+  }, []);
 
-    return (
-        <div
-            className={pclsx("gallery-wrapper")}
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-        >
-            <img
-                className={pclsx("gallery")}
-                src={items[itemIndex].src}
-                alt={items[itemIndex].alt}
+  return (
+    <div
+      className={pclsx("gallery-wrapper")}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <img
+        className={pclsx("gallery")}
+        src={items[itemIndex].src}
+        alt={items[itemIndex].alt}
+      />
+      {items.length > 1 && (
+        <div className={pclsx("gallery-progress")}>
+          {items.map((_, i) => (
+            <GalleryProgress
+              showItem={setItemIndex}
+              key={i}
+              index={i}
+              activeIndex={itemIndex}
+              showAnimation={showAnimation}
             />
-            {items.length > 1 && (
-                <div className={pclsx("gallery-progress")}>
-                    {items.map((_, i) => (
-                        <GalleryProgress
-                            onClick={setItemIndex}
-                            key={i}
-                            index={i}
-                            activeIndex={itemIndex}
-                            showAnimation={showAnimation}
-                        />
-                    ))}
-                </div>
-            )}
+          ))}
         </div>
-    )
+      )}
+    </div>
+  );
 };

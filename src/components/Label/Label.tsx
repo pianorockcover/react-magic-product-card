@@ -4,25 +4,24 @@ import { pclsx } from "../../untils/pclsx";
 import "./style.less";
 
 interface LabelProps {
-    /**
-     * Label color
-     */
-    color?: SimpleProductCardColor;
+  /**
+   * Label color
+   */
+  color?: SimpleProductCardColor;
 }
 
 /**
  * Product label
- * 
+ *
  * @param {LabelProps} props
- * 
- * @returns {JSX.Element} 
+ * @returns {JSX.Element}
  */
-export const Label: FC<LabelProps> = ({ children, ...restProps }) => {
-    const color = useMemo(() => restProps.color || "default", [restProps.color]);
+export const Label: FC<LabelProps> = ({ children, color }) => (
+  <div className={pclsx("label", `bg-${color}-faded`)}>
+    {children}
+  </div>
+);
 
-    return (
-        <div className={pclsx("label", `bg-${color}-faded`)}>
-            {children}
-        </div>
-    );
-}
+Label.defaultProps = {
+  color: "default",
+};

@@ -5,12 +5,12 @@ import "./style.less";
 
 /**
  * Product tag
- * 
- * @returns {JSX.Element} 
+ *
+ * @returns {JSX.Element}
  */
 export const Tag: FC = ({ children }) => (
-    <div className={pclsx("tag")}>
-        <TagIcon />
-        {children}
-    </div>
-)
+  <div className={pclsx("tag")}>
+    <TagIcon />
+    {children}
+  </div>
+);
