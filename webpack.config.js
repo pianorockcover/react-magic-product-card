@@ -1,14 +1,11 @@
 const { resolve } = require("path");
 const TerserWebpackPlugin = require("terser-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const { theme } = require("./theme.js");
-
-const isProd = process.env.NODE_ENV === "production";
+const { rules, plugins } = require("./.storybook/settings.js");
 
 const config = {
-  mode: isProd ? "production" : "development",
+  mode: "production",
   entry: {
-    index: "./src/demo.tsx",
+    index: "./src/index.ts",
   },
   output: {
     path: resolve(__dirname, "dist"),
@@ -24,43 +21,15 @@ const config = {
         use: "babel-loader",
         exclude: /node_modules/,
       },
-      {
-        test: /\.(less)$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          { loader: "css-loader", options: { url: false } },
-          {
-            loader: "less-loader",
-            options: {
-              lessOptions: {
-                relativeUrls: false,
-                modifyVars: {
-                  ...theme,
-                },
-              },
-            },
-          },
-        ],
-      },
+      ...rules,
     ],
   },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "./css/index.css",
-    }),
-  ],
-};
-
-if (isProd) {
-  config.optimization = {
+  optimization: {
     minimizer: [
       new TerserWebpackPlugin(),
     ],
-  };
-} else {
-  config.devServer = {
-    port: 5000,
-  };
-}
+  },
+  plugins,
+};
 
 module.exports = config;

@@ -11,9 +11,9 @@ import { ProductContext, useProductContext } from "./context/useProductContext";
 import { SideActions } from "./SideAction";
 import { AddToCardActionType } from "./context/actions";
 import { BuyButton } from "./BuyButton";
-import "./style/index.less";
 import { Price } from "../Price/Price";
 import { useExternalValues } from "./useExternalValues";
+import "./style/index.less";
 
 /**
  * Product card

@@ -1,4 +1,4 @@
-const { theme } = require("../theme.js");
+const { rules, plugins } = require("./settings");
 
 module.exports = {
   stories: [
@@ -9,26 +9,13 @@ module.exports = {
     "@storybook/addon-links",
     "@storybook/addon-essentials"
   ],
+  core: {
+    builder: "webpack5",
+  },
   framework: "@storybook/react",
   webpackFinal: async (config) => {
-    config.module.rules.push({
-      test: /\.(less)$/,
-      use: [
-        { loader: "css-loader", options: { url: false } },
-        {
-          loader: "less-loader",
-          options: {
-            lessOptions: {
-              relativeUrls: false,
-              javascriptEnabled: true,
-              modifyVars: {
-                ...theme,
-              },
-            },
-          },
-        },
-      ],
-    });
+    config.module.rules.push(...rules);
+    config.plugins.push(...plugins);
 
     return config;
   }

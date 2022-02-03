@@ -1,4 +1,5 @@
 import React, { FC, useCallback, useState } from "react";
+import { isTouch } from "../../untils/isTouch";
 import { pclsx } from "../../untils/pclsx";
 import { GalleryProgress } from "./GalleryProgress";
 import "./style.less";
@@ -47,7 +48,7 @@ export const Gallery: FC<GalleryProps> = ({
         src={items[itemIndex].src}
         alt={items[itemIndex].alt}
       />
-      {items.length > 1 && (
+      {items.length > 1 && !isTouch() && (
         <div className={pclsx("gallery-progress")}>
           {items.map((_, i) => (
             <GalleryProgress

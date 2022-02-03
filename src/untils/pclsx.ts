@@ -1,6 +1,7 @@
 import clsx, { ClassValue } from "clsx";
+import theme from "../../theme.json";
 
-export const classPrefix = "spc-product";
+export const { classPrefix } = theme;
 
 /**
  * Adds prefix to className which were composed by clxs
