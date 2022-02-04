@@ -1,0 +1,5 @@
+{
+    "moduleNameMapper": {
+        ".*\\.less$": "<rootDir>/jestLessMock.js"
+    }
+}

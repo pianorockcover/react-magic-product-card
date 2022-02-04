@@ -15,7 +15,7 @@ export const BuyButton: FC = () => {
   const onRemoveClick = useCallback(() => onBuyClick(0), [onBuyClick]);
 
   return !state.buyAmount ? (
-    <Button color="primary" icon="BagIcon" onClick={onAddClick}>
+    <Button color="primary" icon="BagIcon" onClick={onAddClick} className={pclsx("buy")}>
       Buy
     </Button>
   )
