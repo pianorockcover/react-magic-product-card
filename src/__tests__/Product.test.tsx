@@ -2,9 +2,7 @@ import React from "react";
 import { create, act } from "react-test-renderer";
 import { SimpleProductCard } from "..";
 import { SimpleProductCardProps } from "../components/types";
-import { pclsx } from "../untils/pclsx";
-import ReactDOM from "react-dom";
-import { act } from "react-dom/test-utils";
+import { classPrefix, pclsx } from "../untils/pclsx";
 
 const commonProps: SimpleProductCardProps = {
   category: {
@@ -19,30 +17,14 @@ const commonProps: SimpleProductCardProps = {
   price: "100",
 };
 
-let container: HTMLDivElement | null = null;
-
-beforeEach(() => {
-  container = document.createElement("div");
-  document.body.appendChild(container);
-});
-
-afterEach(() => {
-  if (container) {
-    document.body.removeChild(container);
-    container = null;
-  }
-});
-
 test("Mount test", () => {
   const component = create(
     <SimpleProductCard
       {...commonProps}
-    />, container);
-  });
+    />,
+  );
 
-  const cardWrapper = container?.querySelector(`.${pclsx()}`);
-
-  expect(cardWrapper).toBeDefined();
+  expect(component.root.findAll((e) => e.props.className === classPrefix).length).toBe(1);
 });
 
 test("Add to card test", () => {
@@ -58,9 +40,7 @@ test("Add to card test", () => {
       />,
     );
 
-  act(() => {
-    cardWrapper?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
-  });
+  component.root.findAll((e) => e.props.className?.includes("buy"))[0].props.onClick();
 
   expect(amount).toBe(1);
 });

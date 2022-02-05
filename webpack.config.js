@@ -9,7 +9,7 @@ const config = {
   },
   output: {
     path: resolve(__dirname, "build"),
-    filename: "bundle.js",
+    filename: "index.js",
   },
   resolve: {
     extensions: [".js", ".jsx", ".ts", ".tsx"],
