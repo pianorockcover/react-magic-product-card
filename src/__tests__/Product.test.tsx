@@ -1,5 +1,5 @@
 import React from "react";
-import renderer from "react-test-renderer";
+import { create, act } from "react-test-renderer";
 import { SimpleProductCard } from "..";
 import { SimpleProductCardProps } from "../components/types";
 import { classPrefix, pclsx } from "../untils/pclsx";
@@ -18,9 +18,7 @@ const commonProps: SimpleProductCardProps = {
 };
 
 test("Mount test", () => {
-  jest.mock("../components/Product/style.less", () => jest.fn());
-
-  const component = renderer.create(
+  const component = create(
     <SimpleProductCard
       {...commonProps}
     />,
@@ -31,17 +29,16 @@ test("Mount test", () => {
 
 test("Add to card test", () => {
   let amount;
-
-  const component = renderer.act(
-    <SimpleProductCard
-      {...commonProps}
-      onBuyClick={(add, staff) => {
-        if (add) {
-          amount = staff;
-        }
-      }}
-    />,
-  );
+  const component = create(
+      <SimpleProductCard
+        {...commonProps}
+        onBuyClick={(add, staff) => {
+          if (add) {
+            amount = staff;
+          }
+        }}
+      />,
+    );
 
   component.root.findAll((e) => e.props.className?.includes("buy"))[0].props.onClick();
 
