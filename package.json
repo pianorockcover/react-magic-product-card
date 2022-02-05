@@ -7,7 +7,7 @@
     "build": "cross-env NODE_ENV=production webpack",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test": "jest"
+    "test": "jest --silent"
   },
   "repository": {
     "type": "git",

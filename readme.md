@@ -1,9 +1,8 @@
 https://www.skcript.com/svr/using-webpack-with-react-typescript/
 
-- publish storybook to gh-pages
-- set up tests
-- write readme (short desc, demo link and screenshots)
 - publuish to npm
+- publish storybook to gh-pages
+- write readme (short desc, demo link and screenshots)
 - try to use in umk
 - add to cv
 

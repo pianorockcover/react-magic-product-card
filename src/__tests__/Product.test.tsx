@@ -1,4 +1,5 @@
 import React from "react";
+import { create, act } from "react-test-renderer";
 import { SimpleProductCard } from "..";
 import { SimpleProductCardProps } from "../components/types";
 import { pclsx } from "../untils/pclsx";
@@ -33,10 +34,8 @@ afterEach(() => {
 });
 
 test("Mount test", () => {
-  jest.mock("../components/Product/style.less", () => jest.fn());
-
-  act(() => {
-    ReactDOM.render(<SimpleProductCard
+  const component = create(
+    <SimpleProductCard
       {...commonProps}
     />, container);
   });
@@ -46,21 +45,18 @@ test("Mount test", () => {
   expect(cardWrapper).toBeDefined();
 });
 
-test("Add to card test", async () => {
-  let amount = 0;
-
-  act(() => {
-    ReactDOM.render(<SimpleProductCard
-      {...commonProps}
-      onBuyClick={(add, staff) => {
-        if (add) {
-          amount = staff;
-        }
-      }}
-    />, container);
-  });
-
-  const cardWrapper = container?.querySelector(`.${pclsx("buy")}`);
+test("Add to card test", () => {
+  let amount;
+  const component = create(
+      <SimpleProductCard
+        {...commonProps}
+        onBuyClick={(add, staff) => {
+          if (add) {
+            amount = staff;
+          }
+        }}
+      />,
+    );
 
   act(() => {
     cardWrapper?.dispatchEvent(new MouseEvent("click", { bubbles: true }));
