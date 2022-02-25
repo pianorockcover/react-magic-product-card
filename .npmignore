@@ -1,14 +1,4 @@
 .git/
-.storybook/
 .vscode/
 node_modules/
 src/
-.babelrc
-.eslintrc.js
-.eslintrc.json
-.gitignore
-jest.config.json
-jestLessMock.js
-tsconfig.json
-webpack.config.js
-package-lock.json
