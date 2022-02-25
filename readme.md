@@ -1,6 +1,6 @@
 # Product card written via React
 
-DEMO: https://pianorockcover.github.io/react-simple-product-card/
+Storybook: https://pianorockcover.github.io/react-simple-product-card/
 
 
 ## Run tests
