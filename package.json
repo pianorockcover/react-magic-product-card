@@ -1,9 +1,16 @@
 {
   "name": "react-magic-product-card",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Lightweight and well-customizable React component for product cards",
   "author": "Nikita Pavliuk",
   "main": "lib/index.js",
+  "keywords": [
+    "react",
+    "product",
+    "card",
+    "react-product-card",
+    "react-magic-product-card"
+  ],
   "files": [
     "lib",
     "README.md"
@@ -70,10 +77,5 @@
     "webpack": "^5.67.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.3"
-  },
-  "keywords": [
-    "react",
-    "product",
-    "card"
-  ]
+  }
 }
