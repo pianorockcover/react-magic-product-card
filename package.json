@@ -1,6 +1,6 @@
 {
   "name": "react-magic-product-card",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Lightweight and well-customizable React component for product cards",
   "author": "Nikita Pavliuk",
   "main": "lib/index.js",
