@@ -1,9 +1,13 @@
 {
   "name": "react-magic-product-card",
   "version": "1.0.0",
-  "description": "DEMO: https://pianorockcover.github.io/react-magic-product-card/",
+  "description": "Lightweight and well-customizable React component for product cards",
   "author": "Nikita Pavliuk",
   "main": "lib/index.js",
+  "files": [
+    "lib",
+    "README.md"
+  ],
   "homepage": "https://pianorockcover.github.io/react-magic-product-card/",
   "scripts": {
     "dev": "start-storybook -p 6006",
@@ -15,7 +19,7 @@
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/pianorockcover/react-magic-product-card"
   },
   "license": "MIT",
   "dependencies": {
