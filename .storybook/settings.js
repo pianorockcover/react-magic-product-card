@@ -15,9 +15,6 @@ module.exports = {
           options: {
             lessOptions: {
               relativeUrls: false,
-              modifyVars: {
-                classPrefix: "rmpc"
-              },
             },
           },
         },

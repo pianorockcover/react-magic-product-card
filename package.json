@@ -1,14 +1,15 @@
 {
   "name": "react-magic-product-card",
   "version": "1.0.0",
-  "description": "DEMO: https://pianorockcover.github.io/react-react-magic-product-card/",
+  "description": "DEMO: https://pianorockcover.github.io/react-magic-product-card/",
   "author": "Nikita Pavliuk",
   "main": "lib/index.js",
-  "homepage": "https://pianorockcover.github.io/react-react-magic-product-card/",
+  "homepage": "https://pianorockcover.github.io/react-magic-product-card/",
   "scripts": {
     "dev": "start-storybook -p 6006",
     "test": "jest --silent",
-    "build": "yarn tsc -p tsconfig.release.json && gulp less",
+    "build": "yarn tsc -p tsconfig.release.json && yarn gulp less",
+    "clean": "rm -rf lib",
     "deploy-storybook": "yarn build-storybook && gh-pages -d storybook-static"
   },
   "types": "lib/index.d.ts",
@@ -34,7 +35,6 @@
     "@storybook/manager-webpack5": "^6.5.0-alpha.34",
     "@storybook/react": "^6.4.18",
     "@types/jest": "^27.4.0",
-    "@types/node": "^17.0.12",
     "@types/react": "^17.0.38",
     "@typescript-eslint/eslint-plugin": "^4.6.0",
     "@typescript-eslint/parser": "^4.6.0",
