@@ -1,6 +1,6 @@
 # React Magic Product Card
 
-[DEMO](https://pianorockcover.github.io/react-simple-product-card/)
+[DEMO](https://pianorockcover.github.io/react-magic-product-card/)
 
 See in action: https://pianorockcover.github.io/lightshops/
 

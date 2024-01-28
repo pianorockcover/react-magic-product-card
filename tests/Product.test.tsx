@@ -15,6 +15,8 @@ const commonProps: MagicProductCardProps = {
   }],
   name: "Test product",
   price: "100",
+  buyLabel: "Buy",
+  addedLabel: "Add"
 };
 
 test("Mount test", () => {
