@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useContext } from "react";
-import { pclsx } from "../../untils/pclsx";
 import { Button } from "../Button/Button";
 import { ProductContext } from "./context/useProductContext";
+import { pclsx } from "../../utils/pclsx";
 
 /**
  * Add to card Button

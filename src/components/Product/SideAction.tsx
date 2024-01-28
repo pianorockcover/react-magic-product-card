@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useContext } from "react";
-import { pclsx } from "../../untils/pclsx";
 import { IconButton } from "../IconButton/IconButton";
-import { SimpleProductCardProps } from "../types";
+import { MagicProductCardProps } from "../types";
 import { ToggleToCompareActionType, ToggleToFavouriteActionType } from "./context/actions";
 import { ProductContext } from "./context/useProductContext";
+import { pclsx } from "../../utils/pclsx";
 
 type SideActionsProps = Pick<
-  SimpleProductCardProps,
+  MagicProductCardProps,
   "onInCompareClick" | "onInFavouriteClick"
 >;
 

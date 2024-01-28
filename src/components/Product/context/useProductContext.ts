@@ -1,19 +1,17 @@
 import {
-  createContext, Dispatch, useCallback, useMemo, useReducer,
+  createContext, Dispatch, useReducer,
 } from "react";
-import { useAfterMountEffect } from "../../../untils/useAfterMountEffect";
-import { SimpleProductCardProps } from "../../types";
 import {
-  Action, AddToCardActionType, ToggleToCompareActionType, ToggleToFavouriteActionType,
+  Action,
 } from "./actions";
 import { reducer } from "./reducer";
-import { getInitialState, SimpleProductCardInitialState, SimpleProductCardState } from "./state";
+import { getInitialState, MagicProductCardInitialState, MagicProductCardState } from "./state";
 
 const noop = () => null;
 
 interface ProductContextProps {
   dispatch: Dispatch<Action>;
-  state: SimpleProductCardState;
+  state: MagicProductCardState;
   onBuyClick: (amount: number) => void;
 }
 
@@ -27,7 +25,7 @@ export const useProductContext = ({
   buyAmount,
   inCompare,
   inFavourite,
-}: SimpleProductCardInitialState) => {
+}: MagicProductCardInitialState) => {
   const [state, dispatch] = useReducer(
     reducer,
     getInitialState({ buyAmount, inCompare, inFavourite }),

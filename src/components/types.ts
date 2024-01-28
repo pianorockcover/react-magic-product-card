@@ -1,6 +1,6 @@
 import { GalleryProps } from "./Gallery/Gallery";
 
-export interface SimpleProductCardProps {
+export interface MagicProductCardProps {
   /**
    * Inline mode
    */
@@ -36,7 +36,7 @@ export interface SimpleProductCardProps {
     /**
      * Label color
      */
-    color?: SimpleProductCardColor;
+    color?: MagicProductCardColor;
     /**
      * Label title
      */
@@ -100,7 +100,15 @@ export interface SimpleProductCardProps {
    * Max available items to buy
    */
   maxAmount?: number;
+  /**
+   * Buy button label
+   */
+  buyLabel: string
+  /**
+   * Added text 
+   */
+  addedLabel: string
 }
 
-export type SimpleProductCardColor =
+export type MagicProductCardColor =
   "default" | "primary" | "contrast" | "warning" | "success";

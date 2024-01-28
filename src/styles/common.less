@@ -2,10 +2,6 @@
   box-sizing: border-box;
 }
 
-.@{classPrefix} {
-  font-family: Helvetica, sans-serif;
-}
-
 .@{classPrefix}-disabled,
 [disabled] {
   pointer-events: none;
@@ -15,28 +11,28 @@
 
 /* Backgrounds */
 .@{classPrefix}-bg-success-faded {
-  background-color: lighten(@success, 40%);
-  color: @success;
+  background-color: rgba(@success, 0.2);
+  color: rgb(@success);
 }
 
 .@{classPrefix}-bg-contrast-faded {
-  background-color: lighten(@contrast, 40%);
-  color: @contrast;
+  background-color: rgba(@contrast, 0.2);
+  color: rgb(@contrast);
 }
 
 .@{classPrefix}-bg-warning-faded {
-  background-color: lighten(@warning, 40%);
-  color: @warning;
+  background-color: rgba(@warning, 0.2);
+  color: rgb(@warning);
 }
 
 .@{classPrefix}-bg-primary-faded {
-  background-color: lighten(@primary, 40%);
-  color: @primary;
+  background-color: rgba(@primary, 0.2);
+  color: rgb(@primary);
 }
 
 .@{classPrefix}-bg-default-faded {
-  background-color: lighten(@default, 40%);
-  color: @default;
+  background-color: rgba(@default, 0.2);
+  color: rgb(@default);
 }
 
 /* --- */
@@ -47,8 +43,8 @@
 
   &:hover,
   &.@{classPrefix}-active {
-    color: @contrast;
-    border-color: fade(@contrast, 20%);
+    color: rgb(@contrast);
+    border-color: rgba(@contrast, 0.2);
   }
 }
 
@@ -56,8 +52,8 @@
 
   &:hover,
   &.@{classPrefix}-active {
-    color: @primary;
-    border-color: fade(@primary, 20%);
+    color: rgb(@primary);
+    border-color: rgba(@primary, 0.2);
   }
 }
 
@@ -66,7 +62,7 @@
   &:hover,
   &.@{classPrefix}-active {
     color: @success;
-    border-color: fade(@success, 20%);
+    border-color: rgba(@success, 0.2);
   }
 }
 
@@ -74,8 +70,8 @@
 
   &:hover,
   &.@{classPrefix}-active {
-    color: @warning;
-    border-color: fade(@warning, 20%);
+    color: rgb(@warning);
+    border-color: rgba(@warning, 0.2);
   }
 }
 
@@ -83,8 +79,8 @@
 
   &:hover,
   &.@{classPrefix}-active {
-    color: @default;
-    border-color: fade(@default, 20%);
+    color: rgb(@default);
+    border-color: rgba(@default, 0.2);
   }
 }
 

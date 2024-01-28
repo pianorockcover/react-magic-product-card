@@ -2,11 +2,10 @@ import React, {
   ChangeEvent, FC, useCallback, useMemo,
 } from "react";
 import { AngleIcon } from "../../icons/AngleIcon";
-import { parseIntegerValue } from "../../untils/parseIntegerValue";
-import { pclsx } from "../../untils/pclsx";
 import { IconButton } from "../IconButton/IconButton";
-import "./style.less";
 import { useQuantityValue } from "./useQuantityValue";
+import { parseIntegerValue } from "../../utils/parseIntegerValue";
+import { pclsx } from "../../utils/pclsx";
 
 export const quantityAnimationDuration = 600;
 

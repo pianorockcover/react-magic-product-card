@@ -1,12 +1,12 @@
 import {
   Action, AddToCardActionType, ToggleToCompareActionType, ToggleToFavouriteActionType,
 } from "./actions";
-import { SimpleProductCardState } from "./state";
+import { MagicProductCardState } from "./state";
 
 export const reducer = (
-  state: SimpleProductCardState,
+  state: MagicProductCardState,
   action: Action,
-): SimpleProductCardState => {
+): MagicProductCardState => {
   switch (action.type) {
     case AddToCardActionType:
       return {

@@ -1,12 +1,11 @@
 import React, { FC, useMemo } from "react";
 import { getIcon, IconType } from "../../icons";
-import { SimpleProductCardColor } from "../types";
-import { pclsx } from "../../untils/pclsx";
-import { CommonProps } from "../../untils/types";
-import "./style.less";
+import { MagicProductCardColor } from "../types";
+import { CommonProps } from "../../utils/types";
+import { pclsx } from "../../utils/pclsx";
 
 type IconButtonProps = CommonProps & {
-  hoverColor?: SimpleProductCardColor;
+  hoverColor?: MagicProductCardColor;
   onClick?: () => void;
   icon: IconType;
 };

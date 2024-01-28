@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const theme = require("../theme.json");
 
 /**
  * Webpack settings common for storybook and production build
@@ -17,7 +16,7 @@ module.exports = {
             lessOptions: {
               relativeUrls: false,
               modifyVars: {
-                ...theme,
+                classPrefix: "rmpc"
               },
             },
           },

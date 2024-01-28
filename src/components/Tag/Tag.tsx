@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { TagIcon } from "../../icons/TagIcon";
-import { pclsx } from "../../untils/pclsx";
-import "./style.less";
+import { pclsx } from "../../utils/pclsx";
 
 /**
  * Product tag

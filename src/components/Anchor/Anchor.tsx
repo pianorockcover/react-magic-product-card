@@ -1,13 +1,12 @@
 import React, { FC, useMemo } from "react";
-import { SimpleProductCardColor } from "../types";
-import { pclsx } from "../../untils/pclsx";
-import { CommonProps } from "../../untils/types";
-import "./style.less";
+import { MagicProductCardColor } from "../types";
+import { pclsx } from "../../utils/pclsx";
+import { CommonProps } from "../../utils/types";
 
 type AnchorProps = CommonProps & {
   to: string;
   newTab?: boolean;
-  color?: SimpleProductCardColor;
+  color?: MagicProductCardColor;
 };
 
 /**

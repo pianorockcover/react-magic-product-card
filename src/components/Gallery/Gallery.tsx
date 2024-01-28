@@ -1,8 +1,7 @@
 import React, { FC, useCallback, useState } from "react";
-import { isTouch } from "../../untils/isTouch";
-import { pclsx } from "../../untils/pclsx";
 import { GalleryProgress } from "./GalleryProgress";
-import "./style.less";
+import { pclsx } from "../../utils/pclsx";
+import { isTouch } from "../../utils/isTouch";
 
 type Image = {
   src: string;

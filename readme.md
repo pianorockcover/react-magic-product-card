@@ -1,29 +1,13 @@
-# Product card written via React
+# React Magic Product Card
 
-Storybook: https://pianorockcover.github.io/react-simple-product-card/
+[DEMO](https://pianorockcover.github.io/react-simple-product-card/)
 
+See in action: https://pianorockcover.github.io/lightshops/
 
-## Run tests
+Well customizable and lightweight product card React component
 
-```bash
-	npm run test
-```
+<img src="./screenshots/1.jpg" width="200" alt="Screenshot" />
+<br />
+<img src="./screenshots/2.jpg" width="400" alt="Screenshot" />
 
-## Start development via Storybook
-
-```bash
-	npm run start
-```
-
-## Production build
-
-```bash
-	npm run build
-```
-
-## Deploy to Github Pages
-
-```bash
-	npm run predeploy
-	npm run deploy-storybook
-```
+## Usage

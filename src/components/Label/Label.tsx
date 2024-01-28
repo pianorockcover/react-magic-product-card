@@ -1,13 +1,12 @@
 import React, { FC, useMemo } from "react";
-import { SimpleProductCardColor } from "../types";
-import { pclsx } from "../../untils/pclsx";
-import "./style.less";
+import { MagicProductCardColor } from "../types";
+import { pclsx } from "../../utils/pclsx";
 
 interface LabelProps {
   /**
    * Label color
    */
-  color?: SimpleProductCardColor;
+  color?: MagicProductCardColor;
 }
 
 /**

@@ -1,7 +1,6 @@
 import clsx, { ClassValue } from "clsx";
-import theme from "../../theme.json";
 
-export const { classPrefix } = theme;
+export const CLASS_PREFIX = 'rmpc'
 
 /**
  * Adds prefix to className which were composed by clxs
@@ -15,10 +14,10 @@ export const pclsx = (...classes: ClassValue[]) => {
     return clsx(classes).split(" ")
       .map((className) => (
         !className ? ""
-          : className.includes(classPrefix) ? className
-            : `${classPrefix}-${className}`
+          : className.includes(CLASS_PREFIX) ? className
+            : `${CLASS_PREFIX}-${className}`
       )).join(" ");
   }
 
-  return classPrefix;
+  return CLASS_PREFIX;
 };

@@ -1,17 +1,17 @@
-import { SimpleProductCardProps } from "../../types";
+import { MagicProductCardProps } from "../../types";
 
-export interface SimpleProductCardState {
+export interface MagicProductCardState {
   buyAmount: number;
   inFavourite: boolean;
   inCompare: boolean;
 }
 
-export type SimpleProductCardInitialState = Pick<
-  SimpleProductCardProps,
+export type MagicProductCardInitialState = Pick<
+  MagicProductCardProps,
   "buyAmount" | "inCompare" | "inFavourite"
 >;
 
-export const getInitialState = (props: SimpleProductCardInitialState) => ({
+export const getInitialState = (props: MagicProductCardInitialState) => ({
   buyAmount: props.buyAmount || 0,
   inFavourite: props.inFavourite || false,
   inCompare: props.inCompare || false,

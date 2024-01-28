@@ -10,7 +10,7 @@
     &:visited,
     &:active,
     &:focus {
-        color: @color;
+        color: rgb(@color);
     }
 
     @media (min-width: @md) {
@@ -25,21 +25,21 @@
 }
 
 .@{classPrefix}-anchor-primary {
-    .anchor(@primary, lighten(@primary, 10%));
+    .anchor(@primary, rgba(@primary, 0.7));
 }
 
 .@{classPrefix}-anchor-success {
-    .anchor(@success, lighten(@success, 10%));
+    .anchor(@success, rgba(@success, 0.7));
 }
 
 .@{classPrefix}-anchor-warning {
-    .anchor(@warning, lighten(@warning, 10%));
+    .anchor(@warning, rgba(@warning, 0.7));
 }
 
 .@{classPrefix}-anchor-contrast {
-    .anchor(@contrast, lighten(@contrast, 10%));
+    .anchor(@contrast, rgba(@contrast, 0.7));
 }
 
 .@{classPrefix}-anchor-default {
-    .anchor(@default, @primary);
+    .anchor(@default, rgba(@primary, 0.7));
 }

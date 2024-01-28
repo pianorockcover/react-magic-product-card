@@ -1,12 +1,12 @@
 import { Dispatch } from "react";
-import { SimpleProductCardProps } from "../..";
-import { useAfterMountEffect } from "../../untils/useAfterMountEffect";
 import {
   Action, AddToCardActionType, ToggleToFavouriteActionType, ToggleToCompareActionType,
 } from "./context/actions";
+import { useAfterMountEffect } from "../../utils/useAfterMountEffect";
+import { MagicProductCardProps } from "../types";
 
 type ExternalValues = Pick<
-  SimpleProductCardProps,
+  MagicProductCardProps,
   "buyAmount" | "inCompare" | "inFavourite"
 >;
 
@@ -14,7 +14,7 @@ type ExternalValues = Pick<
  * Hook to update product card state by changing
  * buyAmount, inCompare and inFavourite props
  *
- * @param param0
+ * @param {ExternalValues} props
  * @param dispatch
  */
 export const useExternalValues = (

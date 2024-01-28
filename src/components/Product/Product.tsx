@@ -1,6 +1,5 @@
 import React, { FC, useCallback, useMemo } from "react";
-import { SimpleProductCardProps } from "../types";
-import { classPrefix, pclsx } from "../../untils/pclsx";
+import { MagicProductCardProps } from "../types";
 import { Label } from "../Label/Label";
 import { Tag } from "../Tag/Tag";
 import { Rate } from "../Rate/Rate";
@@ -13,15 +12,15 @@ import { AddToCardActionType } from "./context/actions";
 import { BuyButton } from "./BuyButton";
 import { Price } from "../Price/Price";
 import { useExternalValues } from "./useExternalValues";
-import "./style/index.less";
+import { CLASS_PREFIX, pclsx } from "../../utils/pclsx";
 
 /**
  * Product card
  *
- * @param {SimpleProductCardProps} props
+ * @param {MagicProductCardProps} props
  * @returns {JSX.Element}
  */
-export const SimpleProductCard: FC<SimpleProductCardProps> = ({
+export const MagicProductCard: FC<MagicProductCardProps> = ({
   buyAmount,
   category,
   href,
@@ -66,7 +65,7 @@ export const SimpleProductCard: FC<SimpleProductCardProps> = ({
 
   return (
     <ProductContext.Provider value={providerValue}>
-      <div className={pclsx(classPrefix, {
+      <div className={pclsx(CLASS_PREFIX, {
         inline,
       })}
       >

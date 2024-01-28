@@ -1,6 +1,6 @@
 import React, { FC } from "react";
-import { pclsx } from "../untils/pclsx";
-import { CommonProps } from "../untils/types";
+import { pclsx } from "../utils/pclsx";
+import { CommonProps } from "../utils/types";
 
 export const AngleIcon: FC<CommonProps> = ({ className, style }) => (
   <svg

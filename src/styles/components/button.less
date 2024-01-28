@@ -2,7 +2,7 @@
     display: inline-flex;
     font-weight: 500;
     background: @bg;
-    color: @color;
+    color: rgb(@color);
     padding: 9px;
     padding-left: 23px;
     padding-right: 23px;
@@ -16,7 +16,7 @@
     text-decoration: none !important;
 
     &:hover {
-        background-color: lighten(@bg, 10%);
+        opacity: 0.8;
     }
 
     .@{classPrefix}-icon {
@@ -26,26 +26,26 @@
 
     &.@{classPrefix}-disabled {
         color: @default;
-        background: lighten(@default, 30%);
+        background: rgba(@default, 0.3);
     }
 }
 
 .@{classPrefix}-button-faded-primary {
-    .button(fade(@primary, 15%), @primary);
+    .button(rgba(@primary, 0.15), @primary);
 }
 
 .@{classPrefix}-button-faded-success {
-    .button(fade(@success, 15%), @success);
+    .button(rgba(@success, 0.15), @success);
 }
 
 .@{classPrefix}-button-faded-warning {
-    .button(fade(@warning, 15%), @warning);
+    .button(rgba(@warning, 0.15), @warning);
 }
 
 .@{classPrefix}-button-faded-contrast {
-    .button(fade(@contrast, 15%), @contrast);
+    .button(rgba(@contrast, 0.15), @contrast);
 }
 
 .@{classPrefix}-button-faded-default {
-    .button(fade(@default, 15%), @default);
+    .button(rgba(@default, 0.15), @default);
 }

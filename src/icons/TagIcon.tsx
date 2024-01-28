@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { pclsx } from "../untils/pclsx";
+import { pclsx } from "../utils/pclsx";
 
 export const TagIcon: FC = () => (
   <svg
@@ -21,3 +21,4 @@ export const TagIcon: FC = () => (
     </g>
   </svg>
 );
+

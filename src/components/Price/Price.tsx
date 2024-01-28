@@ -1,6 +1,5 @@
 import React, { FC } from "react";
-import { pclsx } from "../../untils/pclsx";
-import "./style.less";
+import { pclsx } from "../../utils/pclsx";
 
 interface PriceProps {
   value: string;

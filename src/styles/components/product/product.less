@@ -1,3 +1,7 @@
+@import "./productHovered.less";
+@import "./productInline.less";
+@import "./shadowHover.less";
+
 @height: 390px;
 @maxWidth: 250px;
 
@@ -7,6 +11,7 @@
     max-width: @maxWidth;
     position: relative;
     z-index: 1;
+    user-select: none;
 
     &-side-actions {
         position: absolute;

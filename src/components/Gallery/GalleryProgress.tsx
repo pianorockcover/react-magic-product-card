@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo } from "react";
-import { pclsx } from "../../untils/pclsx";
+import { pclsx } from "../../utils/pclsx";
 
 const animationSpeed = 1500;
 const barStyle = {
